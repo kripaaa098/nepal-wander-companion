@@ -10,43 +10,124 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DestinationsRouteImport } from './routes/destinations'
+import { Route as ExperiencesRouteImport } from './routes/experiences'
+import { Route as FoodRouteImport } from './routes/food'
+import { Route as HiddenGemsRouteImport } from './routes/hidden-gems'
+import { Route as StaysRouteImport } from './routes/stays'
 import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
+import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
-  id: '/destinations/',
-  path: '/destinations/',
+const DestinationsRoute = DestinationsRouteImport.update({
+  id: '/destinations',
+  path: '/destinations',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ExperiencesRoute = ExperiencesRouteImport.update({
+  id: '/experiences',
+  path: '/experiences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HiddenGemsRoute = HiddenGemsRouteImport.update({
+  id: '/hidden-gems',
+  path: '/hidden-gems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaysRoute = StaysRouteImport.update({
+  id: '/stays',
+  path: '/stays',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DestinationsRoute,
+} as any)
+const DestinationsSlugRoute = DestinationsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => DestinationsRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/experiences': typeof ExperiencesRoute
+  '/food': typeof FoodRoute
+  '/hidden-gems': typeof HiddenGemsRoute
+  '/stays': typeof StaysRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
   '/destinations/': typeof DestinationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/experiences': typeof ExperiencesRoute
+  '/food': typeof FoodRoute
+  '/hidden-gems': typeof HiddenGemsRoute
+  '/stays': typeof StaysRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
   '/destinations': typeof DestinationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/experiences': typeof ExperiencesRoute
+  '/food': typeof FoodRoute
+  '/hidden-gems': typeof HiddenGemsRoute
+  '/stays': typeof StaysRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
   '/destinations/': typeof DestinationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/destinations/'
+  fullPaths:
+    | '/'
+    | '/destinations'
+    | '/experiences'
+    | '/food'
+    | '/hidden-gems'
+    | '/stays'
+    | '/destinations/$slug'
+    | '/destinations/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/destinations'
-  id: '__root__' | '/' | '/destinations/'
+  to:
+    | '/'
+    | '/experiences'
+    | '/food'
+    | '/hidden-gems'
+    | '/stays'
+    | '/destinations/$slug'
+    | '/destinations'
+  id:
+    | '__root__'
+    | '/'
+    | '/destinations'
+    | '/experiences'
+    | '/food'
+    | '/hidden-gems'
+    | '/stays'
+    | '/destinations/$slug'
+    | '/destinations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DestinationsIndexRoute: typeof DestinationsIndexRoute
+  DestinationsRoute: typeof DestinationsRouteWithChildren
+  ExperiencesRoute: typeof ExperiencesRoute
+  FoodRoute: typeof FoodRoute
+  HiddenGemsRoute: typeof HiddenGemsRoute
+  StaysRoute: typeof StaysRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,19 +139,79 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/destinations': {
+      id: '/destinations'
+      path: '/destinations'
+      fullPath: '/destinations'
+      preLoaderRoute: typeof DestinationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiences': {
+      id: '/experiences'
+      path: '/experiences'
+      fullPath: '/experiences'
+      preLoaderRoute: typeof ExperiencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hidden-gems': {
+      id: '/hidden-gems'
+      path: '/hidden-gems'
+      fullPath: '/hidden-gems'
+      preLoaderRoute: typeof HiddenGemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stays': {
+      id: '/stays'
+      path: '/stays'
+      fullPath: '/stays'
+      preLoaderRoute: typeof StaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/destinations/': {
       id: '/destinations/'
-      path: '/destinations'
+      path: '/'
       fullPath: '/destinations/'
       preLoaderRoute: typeof DestinationsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DestinationsRoute
+    }
+    '/destinations/$slug': {
+      id: '/destinations/$slug'
+      path: '/$slug'
+      fullPath: '/destinations/$slug'
+      preLoaderRoute: typeof DestinationsSlugRouteImport
+      parentRoute: typeof DestinationsRoute
     }
   }
 }
 
+interface DestinationsRouteChildren {
+  DestinationsSlugRoute: typeof DestinationsSlugRoute
+  DestinationsIndexRoute: typeof DestinationsIndexRoute
+}
+
+const DestinationsRouteChildren: DestinationsRouteChildren = {
+  DestinationsSlugRoute: DestinationsSlugRoute,
+  DestinationsIndexRoute: DestinationsIndexRoute,
+}
+
+const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(
+  DestinationsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DestinationsIndexRoute: DestinationsIndexRoute,
+  DestinationsRoute: DestinationsRouteWithChildren,
+  ExperiencesRoute: ExperiencesRoute,
+  FoodRoute: FoodRoute,
+  HiddenGemsRoute: HiddenGemsRoute,
+  StaysRoute: StaysRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
