@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { EmptyState, PageHeader, Section } from "@/components/site/PageShell";
 import { destinations, type Region } from "@/lib/nepal-data";
 
-export const Route = createFileRoute("/destinations")({
+export const Route = createFileRoute("/destinations/")({
   head: () => ({
     meta: [
       { title: "Nepal destinations — Kathmandu to Everest | NepalWander" },
