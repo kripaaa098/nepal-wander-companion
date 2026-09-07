@@ -10,33 +10,241 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BudgetRouteImport } from './routes/budget'
+import { Route as ChecklistRouteImport } from './routes/checklist'
+import { Route as DestinationsRouteImport } from './routes/destinations'
+import { Route as ExperiencesRouteImport } from './routes/experiences'
+import { Route as FoodRouteImport } from './routes/food'
+import { Route as GuideRouteImport } from './routes/guide'
+import { Route as HiddenGemsRouteImport } from './routes/hidden-gems'
+import { Route as PhrasesRouteImport } from './routes/phrases'
+import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as RoutesRouteImport } from './routes/routes'
+import { Route as SafetyRouteImport } from './routes/safety'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as StaysRouteImport } from './routes/stays'
+import { Route as WeatherRouteImport } from './routes/weather'
+import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
+import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BudgetRoute = BudgetRouteImport.update({
+  id: '/budget',
+  path: '/budget',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChecklistRoute = ChecklistRouteImport.update({
+  id: '/checklist',
+  path: '/checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsRoute = DestinationsRouteImport.update({
+  id: '/destinations',
+  path: '/destinations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperiencesRoute = ExperiencesRouteImport.update({
+  id: '/experiences',
+  path: '/experiences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HiddenGemsRoute = HiddenGemsRouteImport.update({
+  id: '/hidden-gems',
+  path: '/hidden-gems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhrasesRoute = PhrasesRouteImport.update({
+  id: '/phrases',
+  path: '/phrases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoutesRoute = RoutesRouteImport.update({
+  id: '/routes',
+  path: '/routes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SafetyRoute = SafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaysRoute = StaysRouteImport.update({
+  id: '/stays',
+  path: '/stays',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeatherRoute = WeatherRouteImport.update({
+  id: '/weather',
+  path: '/weather',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DestinationsRoute,
+} as any)
+const DestinationsSlugRoute = DestinationsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => DestinationsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/budget': typeof BudgetRoute
+  '/checklist': typeof ChecklistRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/experiences': typeof ExperiencesRoute
+  '/food': typeof FoodRoute
+  '/guide': typeof GuideRoute
+  '/hidden-gems': typeof HiddenGemsRoute
+  '/phrases': typeof PhrasesRoute
+  '/planner': typeof PlannerRoute
+  '/routes': typeof RoutesRoute
+  '/safety': typeof SafetyRoute
+  '/search': typeof SearchRoute
+  '/stays': typeof StaysRoute
+  '/weather': typeof WeatherRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/destinations/': typeof DestinationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/budget': typeof BudgetRoute
+  '/checklist': typeof ChecklistRoute
+  '/experiences': typeof ExperiencesRoute
+  '/food': typeof FoodRoute
+  '/guide': typeof GuideRoute
+  '/hidden-gems': typeof HiddenGemsRoute
+  '/phrases': typeof PhrasesRoute
+  '/planner': typeof PlannerRoute
+  '/routes': typeof RoutesRoute
+  '/safety': typeof SafetyRoute
+  '/search': typeof SearchRoute
+  '/stays': typeof StaysRoute
+  '/weather': typeof WeatherRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/destinations': typeof DestinationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/budget': typeof BudgetRoute
+  '/checklist': typeof ChecklistRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/experiences': typeof ExperiencesRoute
+  '/food': typeof FoodRoute
+  '/guide': typeof GuideRoute
+  '/hidden-gems': typeof HiddenGemsRoute
+  '/phrases': typeof PhrasesRoute
+  '/planner': typeof PlannerRoute
+  '/routes': typeof RoutesRoute
+  '/safety': typeof SafetyRoute
+  '/search': typeof SearchRoute
+  '/stays': typeof StaysRoute
+  '/weather': typeof WeatherRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/destinations/': typeof DestinationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/budget'
+    | '/checklist'
+    | '/destinations'
+    | '/experiences'
+    | '/food'
+    | '/guide'
+    | '/hidden-gems'
+    | '/phrases'
+    | '/planner'
+    | '/routes'
+    | '/safety'
+    | '/search'
+    | '/stays'
+    | '/weather'
+    | '/destinations/$slug'
+    | '/destinations/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/budget'
+    | '/checklist'
+    | '/experiences'
+    | '/food'
+    | '/guide'
+    | '/hidden-gems'
+    | '/phrases'
+    | '/planner'
+    | '/routes'
+    | '/safety'
+    | '/search'
+    | '/stays'
+    | '/weather'
+    | '/destinations/$slug'
+    | '/destinations'
+  id:
+    | '__root__'
+    | '/'
+    | '/budget'
+    | '/checklist'
+    | '/destinations'
+    | '/experiences'
+    | '/food'
+    | '/guide'
+    | '/hidden-gems'
+    | '/phrases'
+    | '/planner'
+    | '/routes'
+    | '/safety'
+    | '/search'
+    | '/stays'
+    | '/weather'
+    | '/destinations/$slug'
+    | '/destinations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BudgetRoute: typeof BudgetRoute
+  ChecklistRoute: typeof ChecklistRoute
+  DestinationsRoute: typeof DestinationsRouteWithChildren
+  ExperiencesRoute: typeof ExperiencesRoute
+  FoodRoute: typeof FoodRoute
+  GuideRoute: typeof GuideRoute
+  HiddenGemsRoute: typeof HiddenGemsRoute
+  PhrasesRoute: typeof PhrasesRoute
+  PlannerRoute: typeof PlannerRoute
+  RoutesRoute: typeof RoutesRoute
+  SafetyRoute: typeof SafetyRoute
+  SearchRoute: typeof SearchRoute
+  StaysRoute: typeof StaysRoute
+  WeatherRoute: typeof WeatherRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +256,151 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/budget': {
+      id: '/budget'
+      path: '/budget'
+      fullPath: '/budget'
+      preLoaderRoute: typeof BudgetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checklist': {
+      id: '/checklist'
+      path: '/checklist'
+      fullPath: '/checklist'
+      preLoaderRoute: typeof ChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations': {
+      id: '/destinations'
+      path: '/destinations'
+      fullPath: '/destinations'
+      preLoaderRoute: typeof DestinationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiences': {
+      id: '/experiences'
+      path: '/experiences'
+      fullPath: '/experiences'
+      preLoaderRoute: typeof ExperiencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hidden-gems': {
+      id: '/hidden-gems'
+      path: '/hidden-gems'
+      fullPath: '/hidden-gems'
+      preLoaderRoute: typeof HiddenGemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/phrases': {
+      id: '/phrases'
+      path: '/phrases'
+      fullPath: '/phrases'
+      preLoaderRoute: typeof PhrasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/routes': {
+      id: '/routes'
+      path: '/routes'
+      fullPath: '/routes'
+      preLoaderRoute: typeof RoutesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/safety': {
+      id: '/safety'
+      path: '/safety'
+      fullPath: '/safety'
+      preLoaderRoute: typeof SafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stays': {
+      id: '/stays'
+      path: '/stays'
+      fullPath: '/stays'
+      preLoaderRoute: typeof StaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/weather': {
+      id: '/weather'
+      path: '/weather'
+      fullPath: '/weather'
+      preLoaderRoute: typeof WeatherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations/': {
+      id: '/destinations/'
+      path: '/'
+      fullPath: '/destinations/'
+      preLoaderRoute: typeof DestinationsIndexRouteImport
+      parentRoute: typeof DestinationsRoute
+    }
+    '/destinations/$slug': {
+      id: '/destinations/$slug'
+      path: '/$slug'
+      fullPath: '/destinations/$slug'
+      preLoaderRoute: typeof DestinationsSlugRouteImport
+      parentRoute: typeof DestinationsRoute
+    }
   }
 }
 
+interface DestinationsRouteChildren {
+  DestinationsSlugRoute: typeof DestinationsSlugRoute
+  DestinationsIndexRoute: typeof DestinationsIndexRoute
+}
+
+const DestinationsRouteChildren: DestinationsRouteChildren = {
+  DestinationsSlugRoute: DestinationsSlugRoute,
+  DestinationsIndexRoute: DestinationsIndexRoute,
+}
+
+const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(
+  DestinationsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BudgetRoute: BudgetRoute,
+  ChecklistRoute: ChecklistRoute,
+  DestinationsRoute: DestinationsRouteWithChildren,
+  ExperiencesRoute: ExperiencesRoute,
+  FoodRoute: FoodRoute,
+  GuideRoute: GuideRoute,
+  HiddenGemsRoute: HiddenGemsRoute,
+  PhrasesRoute: PhrasesRoute,
+  PlannerRoute: PlannerRoute,
+  RoutesRoute: RoutesRoute,
+  SafetyRoute: SafetyRoute,
+  SearchRoute: SearchRoute,
+  StaysRoute: StaysRoute,
+  WeatherRoute: WeatherRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
